@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { IoCalendarNumberSharp } from "react-icons/io5";
 
 import Service from "./Service.jsx";
+import { TbPhoneCalling } from "react-icons/tb";
+import { FaLocationDot } from "react-icons/fa6";
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -26,6 +29,40 @@ const Services = () => {
         {services.map((service, index) => (
           <Service key={index} service={service}></Service>
         ))}
+      </div>
+      <button className="btn btn-outline border-1 border-purple-800 mb-20 text-purple-500 font-bold">
+        More Services
+      </button>
+
+      {/* template section */}
+      <div className="bg-black p-20 rounded-xl mb-20 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+        <div className="flex items-center gap-4">
+          <div className="text-purple-600 text-6xl">
+            <IoCalendarNumberSharp />
+          </div>
+          <div className="text-white">
+            <p>We are open monday-friday</p>
+            <p className="text-2xl font-bold">7:00 am - 9:00 pm</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="text-purple-600 text-6xl">
+            <TbPhoneCalling />
+          </div>
+          <div className="text-white">
+            <p>Have a question?</p>
+            <p className="text-2xl font-bold">+2546 251 2658</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="text-purple-600 text-6xl">
+            <FaLocationDot />
+          </div>
+          <div className="text-white">
+            <p>Need a repair? our address</p>
+            <p className="text-2xl font-bold">Liza Street, New York</p>
+          </div>
+        </div>
       </div>
     </div>
   );
