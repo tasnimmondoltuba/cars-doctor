@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { IoCalendarNumberSharp } from "react-icons/io5";
-
 import Service from "./Service.jsx";
 import { TbPhoneCalling } from "react-icons/tb";
 import { FaLocationDot } from "react-icons/fa6";
