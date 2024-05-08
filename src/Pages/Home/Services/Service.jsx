@@ -1,5 +1,6 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const service = ({ service }) => {
   console.log(service);
@@ -15,9 +16,16 @@ const service = ({ service }) => {
           <div className="flex items-center gap-20 text-purple-600 font-bold mt-5">
             <p>Price: {price}</p>
             <div className="card-actions">
-              <button className="">
-                <FaArrowRight />
-              </button>
+              <Link to={`/checkout/${_id}`}>
+                <button className="">
+                  <div className="flex items-center justify-center gap-4">
+                    <p>Book Now</p>
+                    <p>
+                      <FaArrowRight />
+                    </p>
+                  </div>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

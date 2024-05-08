@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
+import { authContext } from "../../../Providers/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(authContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => condole.error(error));
+  };
   const navList = (
     <>
       <li>
@@ -27,11 +35,10 @@ const Header = () => {
         <Link to="/blog" className="font-bold">
           Blog
         </Link>
-      </li>
+      </li>{" "}
       <li>
-        {" "}
-        <Link to="/contact" className="font-bold">
-          Contact
+        <Link to="/bookings" className="font-bold">
+          My Bookings
         </Link>
       </li>
     </>
@@ -71,7 +78,25 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navList}</ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end gap-4">
+          {user?.email ? (
+            <>
+              <button
+                onClick={handleLogout}
+                className="btn bg-purple-300 font-bold text-lg"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link to="/login">
+              {" "}
+              <button className="btn bg-purple-300 font-bold text-lg">
+                Login
+              </button>
+            </Link>
+          )}
+
           <button className="btn bg-purple-300 font-bold text-lg">
             Appointment
           </button>
