@@ -1,21 +1,23 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import login from "../../assets/images/login/login.svg";
 import { Link } from "react-router-dom";
 import { authContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
   const { logIn } = useContext(authContext);
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
+  const handleLoginSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
 
-    logIn((result) => {
-      const user = result.user;
-      console.log(user);
-    }).catch((error) => console.log(error));
+    logIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <div className="hero min-h-screen">
@@ -62,9 +64,11 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-purple-500 font-bold text-xl">
-                Login
-              </button>
+              <input
+                className="btn bg-purple-500 font-bold text-xl"
+                type="submit"
+                value="Login"
+              />
             </div>
           </form>
         </div>
